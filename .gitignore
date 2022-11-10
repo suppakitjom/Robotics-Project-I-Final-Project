@@ -4,3 +4,6 @@
 .vscode/launch.json
 .vscode/ipch
 src/settings.py
+src/test.py
+src/.cache
+src/CurrentlyPlayingDataExample.json
