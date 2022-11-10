@@ -8,6 +8,7 @@ import time
 from spotipyHelper import *
 
 ser = serial.Serial('/dev/cu.usbserial-53220232121', 115200, timeout=1)
+time.sleep(1)
 
 while True:
     text = ser.readline().decode('utf-8').strip()
