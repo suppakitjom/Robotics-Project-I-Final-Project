@@ -1,3 +1,8 @@
+"""
+main file for the spotify remote
+uses pySerial to communicate with ESP32 board
+"""
+
 import serial
 import time
 from spotipyHelper import *

@@ -1,3 +1,8 @@
+/* main file for ESP32 microcontroller
+will communicate with spotify controller file
+using Serial communication
+ */
+
 #include <Arduino.h>
 #include <SPI.h>
 
