@@ -76,3 +76,17 @@ def playAlbum(album):
     Plays an album.
     '''
     sp.start_playback(device_id=DEVICE_ID, context_uri=album)
+
+
+def playPlaylist(playlist):
+    '''
+    Plays a playlist.
+    '''
+    sp.start_playback(device_id=DEVICE_ID, context_uri=playlist)
+
+
+def setVolume(volume):
+    '''
+    Sets the volume of the playback.
+    '''
+    sp.volume(volume, device_id=DEVICE_ID)

@@ -1,3 +1,3 @@
 from spotipyHelper import *
 
-toggleRepeat()
+playPlaylist('spotify:playlist:37i9dQZF1DX0Yxoavh5qJV')

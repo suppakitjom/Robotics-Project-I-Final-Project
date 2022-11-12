@@ -24,14 +24,23 @@ try:
 
         if text == 'Toggle Playback':
             togglePlayBack()
+            print('Toggled playback')
         elif text == 'Toggle Repeat':
             toggleRepeat()
+            print('Toggled repeat')
         elif text == 'Toggle Shuffle':
             toggleShuffle()
+            print('Toggled shuffle')
         elif text == 'Next':
             nextTrack()
+            print('Next track')
         elif text == 'Previous':
             previousTrack()
+            print('Previous track')
+        elif text.split[0] == 'Volume':
+            volume = text.split[1]
+            setVolume(volume)
+            print('Set volume to ' + volume)
 
         if text == 'ALBUM CHARLIE':
             # https://open.spotify.com/album/2LTqBgZUH4EkDcj8hdkNjK
@@ -42,6 +51,10 @@ try:
         elif text == 'TRACK NEVER GONNA GIVE YOU UP':
             # https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT
             playTrack('spotify:track:4cOdK2wGLETKBW3PvgPWqT')
+        elif text == 'PLAYLIST CHRISTMAS HITS':
+            # https://open.spotify.com/playlist/37i9dQZF1DX0Yxoavh5qJV
+            playPlaylist('spotify:playlist:37i9dQZF1DX0Yxoavh5qJV')
+
 except serial.SerialException:
     print('\033[91m' + 'ERROR: Check your serial port connection' + '\033[0m')
 except KeyboardInterrupt:
