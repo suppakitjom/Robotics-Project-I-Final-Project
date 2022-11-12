@@ -7,3 +7,4 @@ src/settings.py
 src/test.py
 src/.cache
 src/CurrentlyPlayingDataExample.json
+src/__pycache__
