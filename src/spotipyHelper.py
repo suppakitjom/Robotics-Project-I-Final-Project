@@ -14,7 +14,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                scope=SCOPE))
 
 
-def togglePlayBack():
+def togglePlayback():
     '''
     Checks if the playback is paused and resumes it.
     Otherwise pauses the playback.
@@ -23,6 +23,13 @@ def togglePlayBack():
         sp.pause_playback(device_id=DEVICE_ID)
     else:
         sp.start_playback(device_id=DEVICE_ID)
+
+
+def stopPlayback():
+    '''
+    Stops the playback.
+    '''
+    sp.pause_playback(device_id=DEVICE_ID)
 
 
 def toggleRepeat():

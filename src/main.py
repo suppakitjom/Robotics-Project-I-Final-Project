@@ -18,13 +18,18 @@ try:
     while True:
         text = ser.readline().decode('utf-8').strip()
         if text:
-            print(text)
+            # print(text)
+            pass
         else:
-            print('No data, retrying...')
+            print('\033[91m' + 'No data, retrying...' + '\033[0m')
 
+        print('\33[33m', end='')
         if text == 'Toggle Playback':
-            togglePlayBack()
+            togglePlayback()
             print('Toggled playback')
+        elif text == 'PAUSE':
+            stopPlayback()
+            print('Stopped playback')
         elif text == 'Toggle Repeat':
             toggleRepeat()
             print('Toggled repeat')
@@ -41,6 +46,7 @@ try:
             volume = text.split()[1]
             setVolume(volume)
             print('Set volume to ' + volume)
+        print('\33[0m', end='')
 
         if text == 'ALBUM CHARLIE':
             # https://open.spotify.com/album/2LTqBgZUH4EkDcj8hdkNjK
