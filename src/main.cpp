@@ -6,13 +6,12 @@ using Serial communication
 
 #include <Arduino.h>
 #include <SPI.h>
-
-const int PLAYPAUSEBUTTON;
-const int NEXTBUTTON;
-const int PREVBUTTON;
-const int VOLUMEKNOB;
-const int REPEATBUTTON;
-const int SHUFFLEBUTTON;
+int PLAYPAUSEBUTTON;
+int NEXTBUTTON;
+int PREVBUTTON;
+int VOLUMEKNOB;
+int REPEATBUTTON;
+int SHUFFLEBUTTON;
 
 int volume;
 
@@ -67,4 +66,8 @@ void loop() {
     if (digitalRead(PREVBUTTON) == LOW) {
         Serial.println("Previous");
     }
+
+    // play/pause every 5 seconds
+    Serial.println("Toggle Playback");
+    delay(5000);
 }

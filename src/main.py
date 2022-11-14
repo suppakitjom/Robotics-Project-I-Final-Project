@@ -37,8 +37,8 @@ try:
         elif text == 'Previous':
             previousTrack()
             print('Previous track')
-        elif text.split[0] == 'Volume':
-            volume = text.split[1]
+        elif len(text.split()) and text.split()[0] == 'Volume':
+            volume = text.split()[1]
             setVolume(volume)
             print('Set volume to ' + volume)
 

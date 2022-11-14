@@ -19,7 +19,7 @@ def togglePlayBack():
     Checks if the playback is paused and resumes it.
     Otherwise pauses the playback.
     '''
-    if sp.currently_playing()['is_playing']:
+    if sp.current_user_playing_track()['is_playing']:
         sp.pause_playback(device_id=DEVICE_ID)
     else:
         sp.start_playback(device_id=DEVICE_ID)
