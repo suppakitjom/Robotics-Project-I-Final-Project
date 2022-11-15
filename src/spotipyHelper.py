@@ -19,7 +19,8 @@ def togglePlayback():
     Checks if the playback is paused and resumes it.
     Otherwise pauses the playback.
     '''
-    if sp.current_user_playing_track()['is_playing']:
+
+    if sp.current_playback() and sp.current_playback()['is_playing']:
         sp.pause_playback(device_id=DEVICE_ID)
     else:
         sp.start_playback(device_id=DEVICE_ID)
@@ -96,4 +97,14 @@ def setVolume(volume):
     '''
     Sets the volume of the playback.
     '''
-    sp.volume(volume, device_id=DEVICE_ID)
+    sp.volume(int(volume), device_id=DEVICE_ID)
+
+
+def getSongInfo():
+    '''
+    Returns the current song's title and artist.
+    '''
+    track = sp.currently_playing()['item']
+    title = track['name']
+    artist = track['artists'][0]['name']
+    return title, artist

@@ -18,7 +18,7 @@ try:
     while True:
         text = ser.readline().decode('utf-8').strip()
         if text:
-            # print(text)
+            print(text)
             pass
         else:
             print('\033[91m' + 'No data, retrying...' + '\033[0m')
@@ -27,7 +27,8 @@ try:
         if text == 'Toggle Playback':
             togglePlayback()
             print('Toggled playback')
-        elif text == 'PAUSE':
+
+        elif text == 'Stop':
             stopPlayback()
             print('Stopped playback')
         elif text == 'Toggle Repeat':
