@@ -8,6 +8,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from settings import *
 
+# initiate the spotipy client using credentials from settings.py
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                client_secret=CLIENT_SECRET,
                                                redirect_uri=REDIRECT_URI,
@@ -98,13 +99,3 @@ def setVolume(volume):
     Sets the volume of the playback.
     '''
     sp.volume(int(volume), device_id=DEVICE_ID)
-
-
-def getSongInfo():
-    '''
-    Returns the current song's title and artist.
-    '''
-    track = sp.currently_playing()['item']
-    title = track['name']
-    artist = track['artists'][0]['name']
-    return title, artist
