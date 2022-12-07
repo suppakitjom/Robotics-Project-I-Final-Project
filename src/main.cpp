@@ -4,16 +4,68 @@ will communicate with spotify controller file
 using Serial communication
  */
 
+#include <Adafruit_SSD1306.h>
 #include <Arduino.h>
+#include <MFRC522.h>
 #include <SPI.h>
 
-#include "ESP32Helper.cpp"
+// pins declaration
+const int PLAYPAUSEBUTTON = 26;
+const int NEXTBUTTON = 33;
+const int PREVBUTTON = 32;
+const int VOLUMEKNOB = 25;
+const int REPEATBUTTON = 16;
+const int SHUFFLEBUTTON = 17;
+
+const int SS_PIN = 5;
+const int RST_PIN = 27;
+const int OLED_RESET = 4;
+const int MOTORENABLE = 15;
+const int MOTORIN1 = 2;
+const int MOTORIN2 = 4;
 
 int volume = 0;
 int newVolume;
 String cardID;
 String tempCardID;
 bool isPlaying;
+
+MFRC522 rfid(SS_PIN, RST_PIN);
+Adafruit_SSD1306 display(OLED_RESET);
+
+void displayText(String text) {
+    // display text on OLED
+    display.clearDisplay();
+    display.setTextSize(3);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    display.println(text);
+    display.display();
+}
+
+String getCardID() {
+    // if card detected return its id
+    if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
+        // convert UID to string
+        String content = "";
+        for (byte i = 0; i < rfid.uid.size; i++) {
+            content.concat(String(rfid.uid.uidByte[i] < 0x10 ? " 0" : " "));
+            content.concat(String(rfid.uid.uidByte[i], HEX));
+        }
+        content.toUpperCase();
+        content.trim();
+
+        while (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
+            // do nothing
+        }
+
+        rfid.PICC_HaltA();
+        rfid.PCD_StopCrypto1();
+        return content;
+    } else {
+        return "";
+    }
+}
 
 void setup() {
     // set pinMode for all pins
@@ -41,13 +93,33 @@ void loop() {
     // if changes, check if it is registered then play corresponding track
     if (tempCardID != cardID) {
         cardID = tempCardID;
-
+        // Serial.println(cardID);
         if (cardID.equals(String("81 C0 D7 1B"))) {
             Serial.println("PLAYLIST CHRISTMAS HITS");
             displayText("PLAYING");
             isPlaying = true;
         } else if (cardID.equals(String("E3 3D F0 9A"))) {
             Serial.println("TRACK NEVER GONNA GIVE YOU UP");
+            displayText("PLAYING");
+            isPlaying = true;
+        } else if (cardID.equals(String("E3 FB 80 04"))) {
+            Serial.println("ALBUM BLUE NEIGHBORHOOD");
+            displayText("PLAYING");
+            isPlaying = true;
+        } else if (cardID.equals(String("D3 5D 96 04"))) {
+            Serial.println("ALBUM BEINGFUNNYINFOREIGNLANGUAGE");
+            displayText("PLAYING");
+            isPlaying = true;
+        } else if (cardID.equals(String("03 6C EB 05"))) {
+            Serial.println("ALBUM SMITHEREENS");
+            displayText("PLAYING");
+            isPlaying = true;
+        } else if (cardID.equals(String("23 62 97 04"))) {
+            Serial.println("PLAYLIST JOMS ESSENTIALS");
+            displayText("PLAYING");
+            isPlaying = true;
+        } else if (cardID.equals(String("53 79 83 06"))) {
+            Serial.println("ALBUM MAKING STEAK");
             displayText("PLAYING");
             isPlaying = true;
         } else {

@@ -47,23 +47,32 @@ try:
             volume = text.split()[1]
             setVolume(volume)
             print('Set volume to ' + volume)
-        else:
-            print('\033[91m' + 'Invalid command' + '\033[0m')
+        # else:
+        #     print('\033[91m' + 'Invalid command' + '\033[0m')
         print('\33[0m', end='')
 
         # play tracks called by ESP32
-        if text == 'ALBUM CHARLIE':
-            # https://open.spotify.com/album/2LTqBgZUH4EkDcj8hdkNjK
-            playAlbum('spotify:album:2LTqBgZUH4EkDcj8hdkNjK')
-        elif text == 'ALBUM CERTIFIED LOVER BOY':
-            # https://open.spotify.com/album/3SpBlxme9WbeQdI9kx7KAV
-            playAlbum('spotify:album:3SpBlxme9WbeQdI9kx7KAV')
-        elif text == 'TRACK NEVER GONNA GIVE YOU UP':
+        if text == 'TRACK NEVER GONNA GIVE YOU UP':
             # https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT
             playTrack('spotify:track:4cOdK2wGLETKBW3PvgPWqT')
         elif text == 'PLAYLIST CHRISTMAS HITS':
             # https://open.spotify.com/playlist/37i9dQZF1DX0Yxoavh5qJV
             playPlaylist('spotify:playlist:37i9dQZF1DX0Yxoavh5qJV')
+        elif text == 'ALBUM BLUE NEIGHBORHOOD':
+            # https://open.spotify.com/album/2mRBvhDWqm8Fj2U0F6mMY4
+            playAlbum('spotify:album:2mRBvhDWqm8Fj2U0F6mMY4')
+        elif text == 'ALBUM BEINGFUNNYINFOREIGNLANGUAGE':
+            # https://open.spotify.com/album/6dVCpQ7oGJD1oYs2fv1t5M
+            playAlbum('spotify:album:6dVCpQ7oGJD1oYs2fv1t5M')
+        elif text == 'ALBUM SMITHEREENS':
+            # https://open.spotify.com/album/2hEnymoejldpuxSdTnkard
+            playAlbum('spotify:album:2hEnymoejldpuxSdTnkard')
+        elif text == 'PLAYLIST JOMS ESSENTIALS':
+            # https://open.spotify.com/playlist/2IbYQdnmVCr5l8UDR9Jw1l
+            playPlaylist('spotify:playlist:2IbYQdnmVCr5l8UDR9Jw1l')
+        elif text == 'ALBUM MAKING STEAK':
+            # https://open.spotify.com/album/2KR8a0U0f286MuzLaEJhL6
+            playAlbum('spotify:album:2KR8a0U0f286MuzLaEJhL6')
 
 # error handlings
 except serial.SerialException:
