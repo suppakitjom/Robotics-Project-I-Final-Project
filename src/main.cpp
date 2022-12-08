@@ -9,63 +9,14 @@ using Serial communication
 #include <MFRC522.h>
 #include <SPI.h>
 
-// pins declaration
-const int PLAYPAUSEBUTTON = 26;
-const int NEXTBUTTON = 33;
-const int PREVBUTTON = 32;
-const int VOLUMEKNOB = 25;
-const int REPEATBUTTON = 16;
-const int SHUFFLEBUTTON = 17;
-
-const int SS_PIN = 5;
-const int RST_PIN = 27;
-const int OLED_RESET = 4;
-const int MOTORENABLE = 15;
-const int MOTORIN1 = 2;
-const int MOTORIN2 = 4;
+// import helper functions, pin numbers and objects
+#include "ESP32Helper.hpp"
 
 int volume = 0;
 int newVolume;
 String cardID;
 String tempCardID;
 bool isPlaying;
-
-MFRC522 rfid(SS_PIN, RST_PIN);
-Adafruit_SSD1306 display(OLED_RESET);
-
-void displayText(String text) {
-    // display text on OLED
-    display.clearDisplay();
-    display.setTextSize(3);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.println(text);
-    display.display();
-}
-
-String getCardID() {
-    // if card detected return its id
-    if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
-        // convert UID to string
-        String content = "";
-        for (byte i = 0; i < rfid.uid.size; i++) {
-            content.concat(String(rfid.uid.uidByte[i] < 0x10 ? " 0" : " "));
-            content.concat(String(rfid.uid.uidByte[i], HEX));
-        }
-        content.toUpperCase();
-        content.trim();
-
-        while (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
-            // do nothing
-        }
-
-        rfid.PICC_HaltA();
-        rfid.PCD_StopCrypto1();
-        return content;
-    } else {
-        return "";
-    }
-}
 
 void setup() {
     // set pinMode for all pins

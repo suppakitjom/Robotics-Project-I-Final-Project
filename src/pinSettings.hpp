@@ -7,8 +7,8 @@ const int PLAYPAUSEBUTTON = 26;
 const int NEXTBUTTON = 33;
 const int PREVBUTTON = 32;
 const int VOLUMEKNOB = 25;
-const int REPEATBUTTON = 35;
-const int SHUFFLEBUTTON = 34;
+const int REPEATBUTTON = 16;
+const int SHUFFLEBUTTON = 17;
 
 const int SS_PIN = 5;
 const int RST_PIN = 27;

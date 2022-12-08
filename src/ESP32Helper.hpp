@@ -7,7 +7,7 @@ and the SSD1306 OLED display
 #include <Adafruit_SSD1306.h>
 #include <MFRC522.h>
 
-#include "pinSettings.cpp"  // import pin numbers
+#include "pinSettings.hpp"  // import pin numbers
 
 MFRC522 rfid(SS_PIN, RST_PIN);
 Adafruit_SSD1306 display(OLED_RESET);
