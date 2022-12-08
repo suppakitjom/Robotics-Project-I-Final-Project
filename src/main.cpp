@@ -138,7 +138,7 @@ void loop() {
 
     // if isPlaying is 1 turn on motor else turn off motor
     if (isPlaying) {
-        analogWrite(MOTORENABLE, 40);
+        analogWrite(MOTORENABLE, 75);
         digitalWrite(MOTORIN1, HIGH);
         digitalWrite(MOTORIN2, LOW);
     } else {
