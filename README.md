@@ -10,7 +10,7 @@
 
 ### Software
 - C++ code to receive input from pushbuttons/potentiometer and post messages on Serial port
-- Python code to receive messages from Serial connection using pyserial and interacting with Spotify's API using HTTPS requests
+- Python code to receive messages from Serial connection using pyserial and interacting with Spotify's API using HTTP requests
 
 
 
